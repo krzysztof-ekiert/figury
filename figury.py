@@ -3,7 +3,7 @@ import math
 class Figure:
     pass
 
-class Circle:
+class Circle(Figure):
     def __init__(self, rad=1):
         if rad < 0:
             self._radius = 0
@@ -79,7 +79,7 @@ class Circle:
     def __add__(self, other):
         return self.__class__(math.sqrt((self._area + other._area)/math.pi))
 
-class Square:
+class Square(Figure):
     def __init__(self, sid=1):
         if sid < 0:
             self._side = 0
@@ -138,7 +138,7 @@ class Square:
     def __add__(self, other):
         return self.__class__(math.sqrt(self._area + other._area))
 
-class Triangle:
+class Triangle(Figure):
     def __init__(self, sid=1, h=1):
         if sid < 0:
             self._side = 0
@@ -215,17 +215,17 @@ class Triangle:
     def __add__(self, other):
         return self.__class__(self._area/2, 1)
 
-a = Circle()
-b = Circle(2)
-
-print(a.radius, a.area, a.diameter)
-print(b.radius, b.area, b.diameter)
-print(a)
-print(b)
-print(a+b)
-
-a.area=12.56637
-print(a.radius, a.area, a.diameter)
+# a = Circle()
+# b = Circle(2)
+#
+# print(a.radius, a.area, a.diameter)
+# print(b.radius, b.area, b.diameter)
+# print(a)
+# print(b)
+# print(a+b)
+#
+# a.area=12.56637
+# print(a.radius, a.area, a.diameter)
 
 
 
