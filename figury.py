@@ -102,7 +102,6 @@ class Square:
             print("Bok nie może być ujemny")
         else:
             self._side = val
-        self._area = self._radius*self._radius*math.pi
         self._area = self._side ** 2
 
     @property
@@ -138,6 +137,83 @@ class Square:
 
     def __add__(self, other):
         return self.__class__(math.sqrt(self._area + other._area))
+
+class Triangle:
+    def __init__(self, sid=1, h=1):
+        if sid < 0:
+            self._side = 0
+            print("Bok nie może być ujemny")
+        else:
+            self._side = sid
+        if h < 0:
+            self._height = 0
+            print("Wysokość nie może być ujemna")
+        else:
+            self._height = h
+        self._area = self._side * self._height / 2
+
+    def __repr__(self):
+        return f"Triangle ({self._side}, {self._height})"
+
+    @property
+    def side(self):
+        return self._side
+
+    @side.setter
+    def side(self, val):
+        if val < 0:
+            self._side = 0
+            print("Bok nie może być ujemny")
+        else:
+            self._side = val
+        self._area = self._side * self._height / 2
+
+    @property
+    def height(self):
+        return self._height
+
+    @height.setter
+    def height(self, val):
+        if val < 0:
+            self._height = 0
+            print("Wysokość nie może być ujemna")
+        else:
+            self._height = val
+        self._area = self._side * self._height / 2
+
+    @property
+    def area(self):
+        return self._area
+
+    @area.setter
+    def area(self, val):
+        if val < 0:
+            self._area = 0
+            print("Pole nie może być ujemne")
+        else:
+            self._area = val
+        self._side = self._area/self._height/2
+
+    def __eq__(self, other):
+        return self._area == other._area
+
+    def __ne__(self, other):
+        return self._area != other._area
+
+    def __ge__(self, other):
+        return self._area >= other._area
+
+    def __le__(self, other):
+        return self._area <= other._area
+
+    def __gt__(self, other):
+        return self._area > other._area
+
+    def __lt__(self, other):
+        return self._area < other._area
+
+    def __add__(self, other):
+        return self.__class__(self._area/2, 1)
 
 a = Circle()
 b = Circle(2)
