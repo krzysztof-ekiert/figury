@@ -79,6 +79,66 @@ class Circle:
     def __add__(self, other):
         return self.__class__(math.sqrt((self._area + other._area)/math.pi))
 
+class Square:
+    def __init__(self, sid=1):
+        if sid < 0:
+            self._side = 0
+            print("Bok nie może być ujemny")
+        else:
+            self._side = sid
+        self._area = self._side ** 2
+
+    def __repr__(self):
+        return f"Square ({self._side})"
+
+    @property
+    def side(self):
+        return self._side
+
+    @side.setter
+    def side(self, val):
+        if val < 0:
+            self._side = 0
+            print("Bok nie może być ujemny")
+        else:
+            self._side = val
+        self._area = self._radius*self._radius*math.pi
+        self._area = self._side ** 2
+
+    @property
+    def area(self):
+        return self._area
+
+    @area.setter
+    def area(self, val):
+        if val < 0:
+            self._area = 0
+            print("Pole nie może być ujemne")
+        else:
+            self._area = val
+        self._side = math.sqrt(self._area)
+
+    def __eq__(self, other):
+        return self._area == other._area
+
+    def __ne__(self, other):
+        return self._area != other._area
+
+    def __ge__(self, other):
+        return self._area >= other._area
+
+    def __le__(self, other):
+        return self._area <= other._area
+
+    def __gt__(self, other):
+        return self._area > other._area
+
+    def __lt__(self, other):
+        return self._area < other._area
+
+    def __add__(self, other):
+        return self.__class__(math.sqrt(self._area + other._area))
+
 a = Circle()
 b = Circle(2)
 
