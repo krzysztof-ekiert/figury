@@ -1,10 +1,30 @@
 import math
 
 class Figure:
-    pass
+    def __init__(self):
+        self._area = 1
+
+    def __eq__(self, other):
+        return self._area == other._area
+
+    def __ne__(self, other):
+        return self._area != other._area
+
+    def __ge__(self, other):
+        return self._area >= other._area
+
+    def __le__(self, other):
+        return self._area <= other._area
+
+    def __gt__(self, other):
+        return self._area > other._area
+
+    def __lt__(self, other):
+        return self._area < other._area
 
 class Circle(Figure):
     def __init__(self, rad=1):
+        super().__init__()
         if rad < 0:
             self._radius = 0
             print("Promień nie może być ujemny")
@@ -58,29 +78,12 @@ class Circle(Figure):
         self._radius = self._diameter /2
         self._area = self._radius * self._radius * math.pi
 
-    def __eq__(self, other):
-        return self._area == other._area
-
-    def __ne__(self, other):
-        return self._area != other._area
-
-    def __ge__(self, other):
-        return self._area >= other._area
-
-    def __le__(self, other):
-        return self._area <= other._area
-
-    def __gt__(self, other):
-        return self._area > other._area
-
-    def __lt__(self, other):
-        return self._area < other._area
-
     def __add__(self, other):
         return self.__class__(math.sqrt((self._area + other._area)/math.pi))
 
 class Square(Figure):
     def __init__(self, sid=1):
+        super().__init__()
         if sid < 0:
             self._side = 0
             print("Bok nie może być ujemny")
@@ -117,29 +120,12 @@ class Square(Figure):
             self._area = val
         self._side = math.sqrt(self._area)
 
-    def __eq__(self, other):
-        return self._area == other._area
-
-    def __ne__(self, other):
-        return self._area != other._area
-
-    def __ge__(self, other):
-        return self._area >= other._area
-
-    def __le__(self, other):
-        return self._area <= other._area
-
-    def __gt__(self, other):
-        return self._area > other._area
-
-    def __lt__(self, other):
-        return self._area < other._area
-
     def __add__(self, other):
         return self.__class__(math.sqrt(self._area + other._area))
 
 class Triangle(Figure):
     def __init__(self, sid=1, h=1):
+        super().__init__()
         if sid < 0:
             self._side = 0
             print("Bok nie może być ujemny")
@@ -194,25 +180,8 @@ class Triangle(Figure):
             self._area = val
         self._side = self._area/self._height/2
 
-    def __eq__(self, other):
-        return self._area == other._area
-
-    def __ne__(self, other):
-        return self._area != other._area
-
-    def __ge__(self, other):
-        return self._area >= other._area
-
-    def __le__(self, other):
-        return self._area <= other._area
-
-    def __gt__(self, other):
-        return self._area > other._area
-
-    def __lt__(self, other):
-        return self._area < other._area
-
     def __add__(self, other):
+        
         return self.__class__(self._area/2, 1)
 
 # a = Circle()
